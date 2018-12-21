@@ -16,14 +16,20 @@ export class IngredientsComponent implements OnInit {
   ngOnInit() {
     this.ingredients = [];
     this.sortBy = this.api.getSortBy();
-    this.api.selectedRecipesChanged.subscribe(ingredientsList => { // subscribe to changes in ingredients list
-      this.ingredients = ingredientsList.filter((ingredient, position) => ingredientsList.indexOf(ingredient) === position);
+    this.api.selectedRecipesChanged.subscribe((ingredientsList: any) => { // subscribe to changes in ingredients list
+      this.ingredients = ingredientsList;
+      this.sortArray();
     });
   }
 
   sortChanged() {
     this.api.sortEmit();
     this.sortBy = this.api.getSortBy();
+    this.sortArray();
+  }
+
+  sortArray() {
+    this.ingredients = this.api.getSortBy().dir === 'ASC' ? this.ingredients.sort() : this.ingredients.sort().reverse();
   }
 
 }

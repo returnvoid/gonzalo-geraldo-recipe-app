@@ -1,12 +1,20 @@
-.ingredientes-container
-  background: lightgray
-  section
-    p
-      text-align: center
-  padding: 0
-  .container
-    padding: 8px
-    height: 100%
-    .counter
-      padding: 8px 24px 8px
-      text-align: right
+.ingredients-container
+  .ingredients-content
+    background: rgba(0,0,0,.04)
+    min-height: 100%
+    .ingredients-list
+      .content
+        overflow-y: auto
+        padding: 8px
+        mat-list
+          padding-top: 0
+    section
+      p
+        text-align: center
+        font-family: Roboto,"Helvetica Neue",sans-serif
+      span
+        vertical-align: middle
+        mat-icon
+          font-size: 16px
+          height: 16px
+          padding: 0

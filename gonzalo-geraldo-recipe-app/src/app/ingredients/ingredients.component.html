@@ -1,23 +1,21 @@
-<mat-card class="container" class="ingredientes-container" fxFill>
-  <div class="container">
-    <section *ngIf="ingredients.length > 0" fxLayout="column" class="ingredients-list">
-      <div fxFlex="none" class="counter">
-        <span matBadge="{{ingredients.length}}" matBadgeOverlap="false">Ingredients</span>
-      </div>
+<section fxFlex class="ingredients-container" fxLayout="column">
+  <div fxFlex class="ingredients-content" fxLayout="column">
+
+    <section *ngIf="ingredients.length > 0" fxFlex fxLayout="column" class="ingredients-list">
       <button fxFlex="none" mat-flat-button color="accent" (click)="sortChanged()"><mat-icon matListIcon>{{sortBy.icon}}</mat-icon>{{sortBy.dir}}</button>
-      <mat-list fxFlex>
-        <mat-list-item *ngFor="let ingredient of ingredients"> {{ingredient}} </mat-list-item>
-      </mat-list>
+      <div fxFlex class="content">
+        <mat-list>
+          <mat-list-item *ngFor="let ingredient of ingredients"> <span><mat-icon fxFlex="none" matListIcon>add</mat-icon> {{ingredient}}</span></mat-list-item>
+        </mat-list>
+      </div>
     </section>
 
-    <section class="container" *ngIf="ingredients.length === 0">
-      <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center">
-        <div fxFlex fxLayout="column" fxLayoutAlign="center center">
-          <mat-icon fxFlex="none" matListIcon>mood_bad</mat-icon>
+    <section fxFlex *ngIf="ingredients.length === 0" fxLayout="column" fxLayoutAlign="center center">
+      <div fxFlex fxLayout="column" fxLayoutAlign="center center">
+          <mat-icon fxFlex="none" matListIcon>style</mat-icon>
           <p fxFlex="none">Select some recipes</p>
         </div>
-      </div>
     </section>
   </div>
 
-</mat-card>
+</section>

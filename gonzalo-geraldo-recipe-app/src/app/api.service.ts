@@ -12,10 +12,11 @@ export class ApiService {
   @Output() selectedRecipesChanged: EventEmitter<Ingredient[]> = new EventEmitter();
   @Output() sortChanged: EventEmitter<string> = new EventEmitter();
   private sortBy: any;
+  private selectedIngredients: Ingredient[];
+
 
   constructor(private http: HttpClient) {
     this.sortBy = this.sortList()[0];
-    this.setSortBy();
   }
 
   getRecipes(): Observable<Recipe[]> {
@@ -42,7 +43,12 @@ export class ApiService {
     this.sortChanged.emit(this.sortBy);
   }
 
+  getTotalIngredients(): number {
+    return this.selectedIngredients ? this.selectedIngredients.length : 0;
+  }
+
   recipesSelectedEmit(ingredients: Ingredient[]) {
+    this.selectedIngredients = ingredients;
     this.selectedRecipesChanged.emit(ingredients);
   }
 

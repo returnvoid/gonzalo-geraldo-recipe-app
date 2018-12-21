@@ -1,0 +1,10 @@
+<mat-selection-list *ngIf="recipes" (selectionChange)="onSelection($event)">
+  <mat-list-option *ngFor="let recipe of recipes" [value]="recipe">
+    <mat-icon matListIcon color="accent">style</mat-icon>
+    <h3 matLine>{{recipe.name}} <span>({{recipe.type}})</span></h3>
+    <p matLine>
+      <span class="cook_time"><mat-icon matListIcon inline>timer</mat-icon> {{recipe.cook_time}} minutes</span>
+    </p>
+    <mat-divider></mat-divider>
+  </mat-list-option>
+</mat-selection-list>

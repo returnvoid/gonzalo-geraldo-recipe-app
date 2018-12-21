@@ -1,0 +1,23 @@
+<mat-card class="container" class="ingredientes-container" fxFill>
+  <div class="container">
+    <section *ngIf="ingredients.length > 0" fxLayout="column" class="ingredients-list">
+      <div fxFlex="none" class="counter">
+        <span matBadge="{{ingredients.length}}" matBadgeOverlap="false">Ingredients</span>
+      </div>
+      <button fxFlex="none" mat-flat-button color="accent" (click)="sortChanged()"><mat-icon matListIcon>{{sortBy.icon}}</mat-icon>{{sortBy.dir}}</button>
+      <mat-list fxFlex>
+        <mat-list-item *ngFor="let ingredient of ingredients"> {{ingredient}} </mat-list-item>
+      </mat-list>
+    </section>
+
+    <section class="container" *ngIf="ingredients.length === 0">
+      <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center">
+        <div fxFlex fxLayout="column" fxLayoutAlign="center center">
+          <mat-icon fxFlex="none" matListIcon>mood_bad</mat-icon>
+          <p fxFlex="none">Select some recipes</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</mat-card>

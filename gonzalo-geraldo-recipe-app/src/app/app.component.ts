@@ -9,9 +9,13 @@ import { Recipe } from './recipe';
 })
 export class AppComponent implements OnInit {
   private recipes: Recipe[];
+  private totalIngredients: number;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.api.selectedRecipesChanged.subscribe((ingredientsList: any) => { // subscribe to changes in ingredients list
+      this.totalIngredients = this.api.getTotalIngredients();
+    });
     this.getRecipes();
   }
 

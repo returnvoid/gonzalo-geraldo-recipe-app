@@ -1,15 +1,20 @@
-<mat-toolbar color="primary">Recipes</mat-toolbar>
-<div fxLayout="row" fxLayoutAlign="start stretch">
-  <section fxLayout="column" fxFlex="60">
-    <app-recipes fxFlex [recipes]="recipes"></app-recipes>
-  </section>
-  <section fxLayout="column" fxFlex="40">
-    <app-ingredients fxFlex fxFill></app-ingredients>
-  </section>
+<div class="container">
+  <mat-toolbar fxFlex="none" color="primary">
+    <span>Recipes</span>
+    <span class="space"></span>
+    <span class="total-ingredients" matBadge="{{totalIngredients}}" matBadgeColor="warn" matBadgeOverlap="true">Total ingredients</span>
+  </mat-toolbar>
+  <div class="content" fxLayout="row">
+    <section class="recipes-content" fxLayout="column" fxFlex="60">
+      <app-recipes fxFlex [recipes]="recipes"></app-recipes>
+    </section>
+    <section class="ingredients-content" fxLayout="column" fxFlex="40">
+      <app-ingredients fxFlex></app-ingredients>
+    </section>
+  </div>
+  <mat-toolbar fxFlex="none" color="primary">
+    <span></span>
+    <span class="space"></span>
+    <span>by GG</span>
+  </mat-toolbar>
 </div>
-<router-outlet></router-outlet>
-<mat-toolbar color="primary">
-  <span></span>
-  <span class="fill-remaining-space"></span>
-  <span>by GG</span>
-</mat-toolbar>

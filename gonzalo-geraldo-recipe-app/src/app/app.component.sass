@@ -1,6 +1,21 @@
 @import "../variables.scss";
 
-.docs-app-background
+.app-background
   background: $background-color
-.fill-remaining-space
+.space
   flex: 1 1 auto
+.container
+  height: 100%
+  min-height: 100%
+  display: flex
+  flex-direction: column
+  .content
+    overflow-y: auto
+    .recipes-content
+      overflow-y: auto
+    .ingredients-content
+      overflow-y: auto
+.total-ingredients
+  font-size: 14px
+  font-weight: normal
+  margin-right: 20px

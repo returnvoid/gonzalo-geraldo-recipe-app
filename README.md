@@ -10,9 +10,9 @@
 
 <p>Run `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.</p>
 
-<p>This is an at-home exercise that we use as part of our standard interview process for frontend and full-stack developers.</p>
-
 <h2>Instructions</h2>
+
+<p>This is an at-home exercise that we use as part of our standard interview process for frontend and full-stack developers.</p>
 
 <ul>
     <li>Clone this repo</li>

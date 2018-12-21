@@ -17,7 +17,7 @@ export class IngredientsComponent implements OnInit {
     this.ingredients = [];
     this.sortBy = this.api.getSortBy();
     this.api.selectedRecipesChanged.subscribe(ingredientsList => { // subscribe to changes in ingredients list
-      this.ingredients = ingredientsList;
+      this.ingredients = ingredientsList.filter((ingredient, position) => ingredientsList.indexOf(ingredient) === position);
     });
   }
 

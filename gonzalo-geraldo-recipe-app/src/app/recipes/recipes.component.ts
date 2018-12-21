@@ -16,27 +16,29 @@ export class RecipesComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    this.api.sortChanged.subscribe(sortBy => {
+    this.sortBy = this.api.getSortBy();
+    this.api.sortChanged.subscribe((sortBy: any) => {
       this.sortBy = sortBy;
-      console.log('sortChanged:subscribe', this.sortBy);
       this.ingredients = this.sortIngredientsArray();
     });
   }
 
-  onSelection($event) {
+  onSelection($event: any) {
     this.ingredients = [];
-    $event.source.selectedOptions.selected.map(recipe => {
-      recipe.value.ingredients.map(ingredient => {
+    $event.source.selectedOptions.selected.map((recipe: any) => {
+      recipe.value.ingredients.map((ingredient: any) => {
         this.ingredients.push(ingredient); // add ingredients for selected recipes
       });
     });
     // call service to emit changes when recipes are selected
-    this.api.recipesSelectedEmit(this.sortIngredientsArray());
+    this.ingredients = this.sortIngredientsArray();
+    this.api.recipesSelectedEmit(this.ingredients);
   }
 
-  sortIngredientsArray(): Ingredient[] {
-    console.log('sortIngredientsArray', this.api.getSortBy());
-    return this.api.getSortBy().dir === 'ASC' ? this.ingredients.sort().reverse() : this.ingredients.sort();
+  sortIngredientsArray(): Ingredient[] {// remove duplicated ingredients
+    let ingredients: Ingredient[];
+    ingredients = this.ingredients.filter((ingredient, position) => this.ingredients.indexOf(ingredient) === position);
+    return ingredients;
   }
 
 }
